@@ -1,4 +1,11 @@
-﻿var ChunkType = {
+/**
+ * RenderWare chunk type identifiers
+ *
+ * These constants identify different sections in DFF binary files.
+ */
+
+const ChunkType = {
+    // Core chunks
     CHUNK_NAOBJECT: 0x0,
     CHUNK_STRUCT: 0x1,
     CHUNK_STRING: 0x2,
@@ -45,6 +52,7 @@
     CHUNK_ENVIRONMENT: 0x2D,
     CHUNK_COREPLUGINIDMAX: 0x2E,
 
+    // Plugin chunks
     CHUNK_MORPH: 0x105,
     CHUNK_SKYMIPMAP: 0x110,
     CHUNK_SKIN: 0x116,
@@ -58,6 +66,7 @@
     CHUNK_NATIVEDATA: 0x510,
     CHUNK_VERTEXFORMAT: 0x510,
 
+    // Rockstar custom chunks (GTA series)
     CHUNK_PIPELINESET: 0x253F2F3,
     CHUNK_SPECULARMAT: 0x253F2F6,
     CHUNK_2DFX: 0x253F2F8,
