@@ -1,41 +1,52 @@
 {
-  "name": "threejs-dff-loader",
+  "name": "dff-loader",
   "version": "1.0.0",
-  "author": "andrewixz",
-  "description": "RenderWare DFF model loader for Three.js - load GTA San Andreas, Vice City, and other RenderWare game models",
+  "author": "Jackal1337",
+  "description": "Modern Three.js loader for RenderWare DFF models and TXD textures (GTA SA/VC/III)",
   "type": "module",
-  "main": "src/DFFLoader.js",
+  "main": "dist/dff-loader.umd.js",
+  "module": "dist/dff-loader.es.js",
   "exports": {
-    ".": "./src/DFFLoader.js"
+    ".": {
+      "import": "./dist/dff-loader.es.js",
+      "require": "./dist/dff-loader.umd.js"
+    },
+    "./DFFLoader": "./src/DFFLoader.js",
+    "./TXDLoader": "./src/TXDLoader.js"
   },
   "files": [
+    "dist/",
     "src/"
   ],
   "keywords": [
     "threejs",
     "three.js",
     "dff",
+    "txd",
     "renderware",
     "gta",
     "san-andreas",
     "vice-city",
     "3d-model",
+    "texture",
     "loader"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewixz/DFFLoader"
+    "url": "https://github.com/Jackal1337/DFF-Loader"
   },
-  "dependencies": {
-    "three": "^0.170.0"
+  "peerDependencies": {
+    "three": ">=0.150.0"
   },
   "devDependencies": {
+    "three": "^0.170.0",
     "vite": "^6.0.3"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   }
 }

@@ -1,23 +1,20 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-    server: {
-        open: true,
-        port: 3000
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'src/index.js'),
+      name: 'DFFLoader',
+      fileName: (format) => `dff-loader.${format}.js`
     },
-    build: {
-        lib: {
-            entry: './src/DFFLoader.js',
-            name: 'DFFLoader',
-            fileName: 'dff-loader'
-        },
-        rollupOptions: {
-            external: ['three'],
-            output: {
-                globals: {
-                    three: 'THREE'
-                }
-            }
+    rollupOptions: {
+      external: ['three'],
+      output: {
+        globals: {
+          three: 'THREE'
         }
+      }
     }
+  }
 });
