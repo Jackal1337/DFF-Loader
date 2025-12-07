@@ -2,6 +2,9 @@
 
 A modern Three.js loader for RenderWare DFF 3D models and TXD texture dictionaries from GTA San Andreas, Vice City, III and other RenderWare-powered games.
 
+[![npm version](https://img.shields.io/npm/v/dff-loader.svg)](https://www.npmjs.com/package/dff-loader)
+[![license](https://img.shields.io/npm/l/dff-loader.svg)](https://github.com/Jackal1337/DFF-Loader/blob/master/LICENSE)
+
 ## Features
 
 - **Three.js r150+ compatible** (tested with r170)
@@ -11,30 +14,36 @@ A modern Three.js loader for RenderWare DFF 3D models and TXD texture dictionari
 - **Multi-material meshes** - Proper material assignment via BinMesh PLG
 - **Complete geometry support** - Positions, normals, UVs, vertex colors
 - **Skeletal animation data** - Bones and skin weights
-- **Modern dev setup** - Vite-based development server with hot reload
 
 ## Installation
 
+### NPM
+
 ```bash
-npm install
+npm install dff-loader
+```
+
+### CDN
+
+```html
+<!-- unpkg -->
+<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/dff-loader"></script>
+
+<!-- or jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/three"></script>
+<script src="https://cdn.jsdelivr.net/npm/dff-loader"></script>
 ```
 
 ## Quick Start
 
-### Development Server
-
-```bash
-npm run dev
-```
-
-Open http://localhost:3000 and drag & drop .dff and .txd files to view models with textures.
-
-### Basic Usage
+### With NPM (ES Modules)
 
 ```javascript
 import * as THREE from 'three';
-import { DFFLoader } from './src/DFFLoader.js';
+import { DFFLoader, TXDLoader } from 'dff-loader';
 
+const scene = new THREE.Scene();
 const loader = new DFFLoader();
 
 loader.load('model.dff', (model) => {
@@ -42,11 +51,25 @@ loader.load('model.dff', (model) => {
 });
 ```
 
+### With CDN (Browser)
+
+```html
+<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/dff-loader"></script>
+<script>
+  const { DFFLoader, TXDLoader } = window.DFFLoader;
+
+  const loader = new DFFLoader();
+  loader.load('model.dff', (model) => {
+      scene.add(model);
+  });
+</script>
+```
+
 ### With TXD Textures
 
 ```javascript
-import { DFFLoader } from './src/DFFLoader.js';
-import { TXDLoader } from './src/TXDLoader.js';
+import { DFFLoader, TXDLoader } from 'dff-loader';
 
 // First load the texture dictionary
 const txdLoader = new TXDLoader();
@@ -64,6 +87,8 @@ txdLoader.load('textures.txd', (textures) => {
 ### Parse from ArrayBuffer
 
 ```javascript
+import { DFFLoader, TXDLoader } from 'dff-loader';
+
 // For DFF
 const dffLoader = new DFFLoader();
 const model = dffLoader.parse(dffArrayBuffer);
@@ -72,6 +97,17 @@ const model = dffLoader.parse(dffArrayBuffer);
 const txdLoader = new TXDLoader();
 const textures = txdLoader.parse(txdArrayBuffer);
 ```
+
+### Development Server
+
+```bash
+git clone https://github.com/Jackal1337/DFF-Loader.git
+cd DFF-Loader
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 and drag & drop .dff and .txd files to view models.
 
 ## Supported Formats
 
