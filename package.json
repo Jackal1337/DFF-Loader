@@ -1,6 +1,6 @@
 {
   "name": "dff-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jackal1337",
   "description": "Modern Three.js loader for RenderWare DFF models and TXD textures (GTA SA/VC/III)",
   "type": "module",
